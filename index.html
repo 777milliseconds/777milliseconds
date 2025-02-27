@@ -24,7 +24,7 @@ function test() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ message: inputText });
+            body: JSON.stringify({ message: inputText })
         })
         .then((res) => {
             if(res.status === 200){
