@@ -18,7 +18,7 @@ body {
 }
 
 .title::after {
-  content: "Pasir";
+  content: "send me a message";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -91,7 +91,7 @@ body {
 }
 
 .input-box:empty:before {
-  content: "TYPE HERE...";
+  content: "Message..";
   color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
   position: absolute;
