@@ -1,19 +1,25 @@
 @import url('https://fonts.cdnfonts.com/css/akira-expanded');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
+@import url('https://fonts.cdnfonts.com/css/satoshi');
 
 body {
   /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
-  background-color: rgb(37, 37, 37);
+  background: linear-gradient(3deg, rgb(94, 94, 94) 0%, rgb(19, 19, 19) 100%);
   min-height: 100vh;
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .music-container {
   display: flex;
-  align-items: center;
+  justify-content: flex-end; /* Aligns content to the right */
+  align-items: flex-start; /* Aligns content to the top */
+  position: absolute; /* Positions the container relative to the page */
+  top: 25px; /* Distance from the top */
+  right: 25px; /* Distance from the right */
   gap: 25px;
 }
 
@@ -25,6 +31,28 @@ body {
   justify-content: center;
   width: 65px;
   height: 65px;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px; /* Keep padding for spacing */
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* Transparent black */
+  border-radius: 25px;
+  filter: blur(7px);
+  z-index: -1; /* Place the blurred background behind the content */
 }
 
 .icon-container i,
@@ -35,9 +63,9 @@ body {
 }
 
 @keyframes rainbow {
-  0% { color: rgb(250, 12, 12); text-shadow: 0 0 15px rgb(250, 12, 12) }
-  50% { color: rgb(255, 159, 159); text-shadow: 0 0 15px rgb(255, 59, 59) }
-  100% { color: rgb(250, 12, 12); text-shadow: 0 0 15px rgb(250, 12, 12) }
+  0% { color: rgb(160, 160, 160); text-shadow: 0 0 15px rgb(160, 160, 160); }
+  50% { color: rgb(172, 172, 172); text-shadow: 0 0 15px rgb(172, 172, 172); }
+  100% { color: rgb(160, 160, 160); text-shadow: 0 0 15px rgb(160, 160, 160); }
 }
 
 .tooltip {
@@ -54,22 +82,14 @@ body {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 23px;
-  text-shadow: 0 0 20px violet,
-  0 0 40px purple,
-  0 0 60px purple,
-  0 0 80px purple,
-  0 0 100px purple,
-  0 0 120px purple,
-  0 0 140px purple,
-  0 0 160px purple,
-  0 0 180px purple,
-  0 0 200px black;
   transition: opacity 0.3s ease-in-out;
+  z-index: 1;
 }
 
 .icon-container:hover .tooltip {
   visibility: visible;
   opacity: 1;
+  z-index: 1;
 }
 
 .code {
@@ -111,15 +131,22 @@ body {
   animation: rainbow 10s infinite linear;
 }
 
-.current {
-  animation: rainbow 10s infinite linear;
+.name {
+    position: relative;
+    top: 50%;  
+    width: 12em;
+    margin: 0 auto;
+    font-size: 250%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+    font-weight: 600;
+    font-family: 'Satoshi', sans-serif !important;
 }
 
-.current {
-  font-family: 'Akira Expanded', sans-serif;
-  font-size: 30px;
-  white-space: nowrape;
-  position: relative;
+.name {
+  animation: rainbow 10s infinite linear;
 }
 
 .title {
@@ -128,16 +155,6 @@ body {
   font-size: 45px;
   white-space: nowrap;
   position: relative;
-}
-
-.title::after {
-  color: white;
-  content: "click here!";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(15px);
 }
 
 .title:hover {
@@ -149,11 +166,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 45%;
+  width: 220px;
   height: 60px;
-  border-radius: 50px;
+  border-radius: 35px;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(50px);
   padding: 10px 20px;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
@@ -210,7 +227,7 @@ body {
 }
 
 .input-box:empty:before {
-  content: "TYPE HERE...";
+  content: "Message";
   color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
   position: absolute;

@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>a</title>
+    <title>@</title>
     <script>
         let string = "mil".split('');
         let show = "@";
@@ -40,85 +40,31 @@
 </head>
 
 <body>
+    <p class="name">@</p>
     <div class="music-container">
-        <p class="current">Juice WRLD - Bigger</p>
         <i class="fa fa-play-circle" id="playButton" onclick="play()" style="font-size:48px;color:white;cursor: pointer;"></i>
     </div>
+    <br>
     <div class="box">
         <div class="input-box" contenteditable="true"></div>
         <button class="send-btn" onclick="test()">➤</button>
     </div>
     <br>
-    <div class="icon-container">
-        <img src="arrow.png" class="arrow" style="height: 45px; width: 45px;">
-        <span class="tooltip">Use code "PASIR" for 5% off @ lean store</span>
-    </div>
-    <br>
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div class="icon-container">
-            <img src="mail.png" class="mail" onclick="window.location.href='mailto:admin@leanstore.my.id';" style="height: 45px; width: 45px;">
-            <span class="tooltip">admin@leanstore.my.id</span>
-        </div>
-        <div class="icon-container">
-            <img src="lean.png" class="lean" onclick="window.location.href='https:\/\/discord.gg\/mczGxF6bgX';">
-            <span class="tooltip">discord.gg/leanstore</span>
-        </div>
-        <div class="icon-container">
-            <img src="instagram.png" class="instagram" onclick="window.location.href='https:\/\/instagram.com\/777syamil';" style="height: 45px; width: 45px;">
-            <span class="tooltip">@777syamil</span>
+    <div class="container-wrapper">
+        <div class="container">
+            <div class="icon-container">
+                <img src="mail.png" class="mail" onclick="window.location.href='mailto:admin@leanstore.my.id';" style="height: 45px; width: 45px;">
+                <span class="tooltip">admin@leanstore.my.id</span>
+            </div>
+            <div class="icon-container">
+                <img src="lean.png" class="lean" onclick="window.location.href='https:\/\/discord.gg\/mczGxF6bgX';">
+                <span class="tooltip">discord.gg/leanstore</span>
+            </div>
+            <div class="icon-container">
+                <img src="instagram.png" class="instagram" onclick="window.location.href='https:\/\/instagram.com\/777syamil';" style="height: 45px; width: 45px;">
+                <span class="tooltip">@777syamil</span>
+            </div>
         </div>
     </div>
-      
-
-    <script>
-let played = false;
-var audio = new Audio('Biscotti In The Air.mp3');
-let icon = document.querySelector('.fa-play-circle');
-function play() {
-    if(played) {
-        audio.pause()
-        played = false;
-        icon.classList.remove('fa-pause-circle');
-        icon.classList.add('fa-play-circle');
-    } else {
-        audio.play()
-        played = true;
-        icon.classList.remove('fa-play-circle');
-        icon.classList.add('fa-pause-circle');
-    }
-}
-
-function test() {
-    let inputBox = document.querySelector(".input-box");
-    let inputText = inputBox.textContent.trim();
-
-    if (inputText !== "") {
-        fetch("https://deadpan-blushing-steam.glitch.me/post", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ message: inputText })
-        })
-        .then((res) => {
-            if(res.status === 200){
-                window.location.href = "https://deadpan-blushing-steam.glitch.me/sent";
-            } else {
-                window.location.href = "https://deadpan-blushing-steam.glitch.me/error";
-            }
-        });
-        inputBox.textContent = "";
-        inputBox.focus();
-        document.execCommand("insertText", false, "");
-    }
-}
-
-document.querySelector(".input-box").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        test();
-    }
-});
-
-    </script>
+    <script src="./css/script.js"></script>
 </body>
