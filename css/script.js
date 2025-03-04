@@ -9,10 +9,6 @@ for(let i = 1; i < name.length+1; i++) {
 let played = false;
 var audio = new Audio('MOJO JOJO.mp3');
 let icon = document.querySelector('.fa-play-circle');
-audio.play()
-played = true;
-icon.classList.remove('fa-play-circle');
-icon.classList.add('fa-pause-circle');
 
 function play() {
     if(played) {
